@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BODY GARAGE | Gym & Fitness</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                BODY<span>GARAGE</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#plans">Membership</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <li><a href="#timetable">Timetable</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="small-title">WELCOME TO BODY GARAGE</p>
+
+            <h1>
+                BUILD YOUR
+                <span>STRONGER</span>
+                SELF
+            </h1>
+
+            <p>
+                Train harder. Stay stronger. Become the best version
+                of yourself with Body Garage.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{{ url_for('register') }}" class="btn">JOIN NOW</a>
+                <a href="#about" class="btn btn-outline">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="section-title">
+            <p>WHO WE ARE</p>
+            <h2>ABOUT <span>US</span></h2>
+        </div>
+
+        <div class="about-container">
+            <div class="about-text">
+                <h3>More Than Just A Gym</h3>
+
+                <p>
+                    Body Garage is a modern fitness centre designed
+                    for people who are serious about their health,
+                    strength and fitness.
+                </p>
+
+                <p>
+                    Whether you are a beginner or an experienced athlete,
+                    our trainers and equipment are here to help you
+                    reach your goals.
+                </p>
+
+                <div class="stats">
+                    <div>
+                        <h3>500+</h3>
+                        <p>Members</p>
+                    </div>
+
+                    <div>
+                        <h3>10+</h3>
+                        <p>Trainers</p>
+                    </div>
+
+                    <div>
+                        <h3>5+</h3>
+                        <p>Years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section dark-section">
+        <div class="section-title">
+            <p>WHAT WE OFFER</p>
+            <h2>OUR <span>SERVICES</span></h2>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🏋️</div>
+                <h3>Strength Training</h3>
+                <p>
+                    Build strength and muscle with professional
+                    equipment and training programs.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🥊</div>
+                <h3>Boxing</h3>
+                <p>
+                    Improve your fitness, coordination and endurance
+                    through boxing workouts.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏃</div>
+                <h3>Cardio</h3>
+                <p>
+                    Improve stamina and cardiovascular fitness with
+                    our dedicated cardio area.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🧘</div>
+                <h3>Yoga & Fitness</h3>
+                <p>
+                    Improve flexibility, balance and overall
+                    body wellness.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership -->
+    <section id="plans" class="section">
+        <div class="section-title">
+            <p>CHOOSE YOUR PLAN</p>
+            <h2>MEMBERSHIP <span>PLANS</span></h2>
+        </div>
+
+        <div class="pricing-container">
+
+            <!-- Monthly Plan -->
+            <div class="price-card">
+                <h3>MONTHLY</h3>
+
+                <div class="price">
+                    ₹1,499
+                    <span>/month</span>
+                </div>
+
+                <ul>
+                    <li>✓ Gym Access</li>
+                    <li>✓ Cardio Area</li>
+                    <li>✓ Basic Training</li>
+                    <li>✓ Locker Facility</li>
+                </ul>
+
+                <button onclick="joinPlan('Monthly')">
+                    JOIN NOW
+                </button>
+            </div>
+
+            <!-- Quarterly Plan -->
+            <div class="price-card popular">
+                <div class="popular-label">POPULAR</div>
+
+                <h3>QUARTERLY</h3>
+
+                <div class="price">
+                    ₹2,999
+                    <span>/3 months</span>
+                </div>
+
+                <ul>
+                    <li>✓ Full Gym Access</li>
+                    <li>✓ Cardio Area</li>
+                    <li>✓ Personal Training</li>
+                    <li>✓ Locker Facility</li>
+                </ul>
+
+                <button onclick="joinPlan('Quarterly')">
+                    JOIN NOW
+                </button>
+            </div>
+
+            <!-- Yearly Plan -->
+            <div class="price-card">
+                <h3>YEARLY</h3>
+
+                <div class="price">
+                    ₹7,999
+                    <span>/year</span>
+                </div>
+
+                <ul>
+                    <li>✓ Unlimited Gym Access</li>
+                    <li>✓ Personal Training</li>
+                    <li>✓ Diet Guidance</li>
+                    <li>✓ All Facilities</li>
+                </ul>
+
+                <button onclick="joinPlan('Yearly')">
+                    JOIN NOW
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Trainers -->
+    <section id="trainers" class="section dark-section">
+        <div class="section-title">
+            <p>MEET OUR TEAM</p>
+            <h2>OUR <span>TRAINERS</span></h2>
+        </div>
+
+        <div class="trainer-container">
+            <div class="trainer-card">
+                <div class="trainer-photo">👨‍🏫</div>
+                <h3>Rahul Sharma</h3>
+                <p>Strength Coach</p>
+            </div>
+
+            <div class="trainer-card">
+                <div class="trainer-photo">👨‍🏫</div>
+                <h3>Akash Patil</h3>
+                <p>Fitness Trainer</p>
+            </div>
+
+            <div class="trainer-card">
+                <div class="trainer-photo">👩‍🏫</div>
+                <h3>Priya Singh</h3>
+                <p>Yoga Trainer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timetable -->
+    <section id="timetable" class="section">
+        <div class="section-title">
+            <p>TRAIN WITH US</p>
+            <h2>GYM <span>TIMETABLE</span></h2>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Evening</th>
+                </tr>
+
+                <tr>
+                    <td>Monday</td>
+                    <td>Strength</td>
+                    <td>Cardio</td>
+                    <td>CrossFit</td>
+                </tr>
+
+                <tr>
+                    <td>Tuesday</td>
+                    <td>Cardio</td>
+                    <td>Yoga</td>
+                    <td>Strength</td>
+                </tr>
+
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Strength</td>
+                    <td>Cardio</td>
+                    <td>Boxing</td>
+                </tr>
+
+                <tr>
+                    <td>Thursday</td>
+                    <td>Yoga</td>
+                    <td>Strength</td>
+                    <td>CrossFit</td>
+                </tr>
+
+                <tr>
+                    <td>Friday</td>
+                    <td>Cardio</td>
+                    <td>Strength</td>
+                    <td>Boxing</td>
+                </tr>
+
+                <tr>
+                    <td>Saturday</td>
+                    <td>Full Body</td>
+                    <td>Cardio</td>
+                    <td>Fitness</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section dark-section">
+        <div class="section-title">
+            <p>GET IN TOUCH</p>
+            <h2>CONTACT <span>US</span></h2>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>BODY GARAGE</h3>
+
+                <p>📍 Mumbai, Maharashtra</p>
+                <p>📞 +91 98765 43210</p>
+                <p>✉️ info@ironfitness.com</p>
+
+                <p>
+                    Open Monday - Sunday<br>
+                    6:00 AM - 11:00 PM
+                </p>
+            </div>
+
+            <form onsubmit="submitForm(event)">
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Phone Number"
+                    required
+                >
+
+                <textarea
+                    id="message"
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">
+            BODY<span>GARAGE</span>
+        </div>
+
+        <p>
+            © 2026 BODY GARAGE. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

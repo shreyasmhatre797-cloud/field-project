@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Member Dashboard - Body Garage</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <p>BODY GARAGE</p>
+
+            <h2>
+                MEMBER <span>DASHBOARD</span>
+            </h2>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h2>Welcome, {{ name }}! 💪</h2>
+
+            <hr>
+
+            <h3>Membership Details</h3>
+
+            <p>
+                <strong>Member Name:</strong>
+                {{ name }}
+            </p>
+
+            <p>
+                <strong>Membership Plan:</strong>
+                {{ membership }}
+            </p>
+
+            <p>
+                <strong>Membership Expiry:</strong>
+                {{ expiry }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span>{{ status }}</span>
+            </p>
+
+            <br>
+
+            <a href="/">
+                <button>HOME</button>
+            </a>
+
+            <a href="/logout">
+                <button>LOGOUT</button>
+            </a>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

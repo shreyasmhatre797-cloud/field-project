@@ -1,0 +1,171 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Body Garage</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .dashboard-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        .dashboard-card th {
+            background-color: #ff3b30;
+            color: white;
+            padding: 14px 10px;
+            border: 1px solid #333;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .dashboard-card td {
+            padding: 14px 10px;
+            border: 1px solid #444;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .dashboard-card tr:nth-child(even) {
+            background-color: #222;
+        }
+
+        .delete-button {
+            background-color: #ff3b30;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .delete-button:hover {
+            background-color: #d92820;
+        }
+
+        .home-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #ff3b30;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .home-button:hover {
+            background-color: #d92820;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section">
+
+        <div class="section-title">
+            <p>Body Garage</p>
+
+            <h2>
+                ADMIN <span>DASHBOARD</span>
+            </h2>
+        </div>
+
+        <div class="dashboard-card admin-card"></div>
+
+            <h2>Welcome, Admin! 👨‍💼</h2>
+
+            <hr>
+
+            <h3>Gym Management</h3>
+
+            <p>
+                Manage members, memberships, payments and attendance.
+            </p>
+
+            <h3>All Members</h3>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Membership</th>
+                            <th>Expiry</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for member in members %}
+
+                        <tr>
+                            <td>{{ member.MemberID }}</td>
+                            <td>{{ member.FullName }}</td>
+                            <td>{{ member.Email }}</td>
+                            <td>{{ member.Phone }}</td>
+                            <td>{{ member.MembershipType }}</td>
+                            <td>{{ member.MembershipExpiry }}</td>
+
+                            <td>
+                                <form
+                                    action="/delete_member/{{ member.MemberID }}"
+                                    method="POST"
+                                    onsubmit="return confirm('Are you sure you want to delete this member?');">
+
+                                    <button type="submit" class="delete-button">
+    Delete
+</button>
+
+                                </form>
+                            </td>
+                        </tr>
+
+                        {% else %}
+
+                        <tr>
+                            <td colspan="7">
+                                No members registered yet.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <a href="/payments" class="home-button">VIEW PAYMENTS</a>
+
+<a href="/" class="home-button">HOME</a>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
+```

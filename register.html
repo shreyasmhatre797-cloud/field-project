@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Body Garage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <section class="section">
+        <div class="section-title">
+            <p>START YOUR JOURNEY</p>
+            <h2>JOIN <span>Body Garage</span></h2>
+        </div>
+
+        <form method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="password" name="password" placeholder="Create Password" required>
+
+            <select id="membership" name="membership" required>
+                <option value="Monthly">Monthly - ₹999</option>
+                <option value="Quarterly">Quarterly - ₹2499</option>
+                <option value="Yearly">Yearly - ₹7999</option>
+            </select>
+
+            <button type="submit">CREATE MEMBERSHIP</button>
+        </form>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Body Garage</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <section class="section">
+        <div class="section-title">
+            <p>Body Garage</p>
+            <h2>MEMBERSHIP <span>PAYMENTS</span></h2>
+        </div>
+
+        <div class="dashboard-card admin-card">
+            <h2>Payment Records</h2>
+
+
+<div class="summary-container">
+
+    <div class="summary-card">
+        <h3>Total Collected</h3>
+        <h2>₹{{ summary.TotalCollected }}</h2>
+    </div>
+
+    <div class="summary-card">
+        <h3>Paid Payments</h3>
+        <h2>{{ summary.PaidCount or 0 }}</h2>
+    </div>
+
+    <div class="summary-card">
+        <h3>Pending Payments</h3>
+        <h2>{{ summary.PendingCount or 0 }}</h2>
+    </div>
+
+</div>
+
+            
+<form action="/payments" method="POST" class="payment-form">
+
+    <label for="member_id">Member ID</label>
+    <input type="number" id="member_id" name="member_id"
+           min="1" placeholder="Enter Member ID" required>
+
+    <label for="amount">Amount (₹)</label>
+    <input type="number" id="amount" name="amount"
+           min="0.01" step="0.01" placeholder="Enter amount" required>
+
+    <label for="payment_method">Payment Method</label>
+    <select id="payment_method" name="payment_method" required>
+        <option value="">Select method</option>
+        <option value="Cash">Cash</option>
+        <option value="UPI">UPI</option>
+        <option value="Card">Card</option>
+    </select>
+
+    <label for="payment_status">Payment Status</label>
+    <select id="payment_status" name="payment_status" required>
+        <option value="Paid">Paid</option>
+        <option value="Pending">Pending</option>
+    </select>
+
+    <button type="submit" class="delete-button">Record Payment</button>
+
+</form>
+
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Member ID</th>
+                            <th>Amount</th>
+                            <th>Payment Date</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for payment in payments %}
+                        <tr>
+                            <td>{{ payment.PaymentID }}</td>
+                            <td>{{ payment.MemberID }}</td>
+                            <td>₹{{ payment.Amount }}</td>
+                            <td>{{ payment.PaymentDate }}</td>
+                            <td>{{ payment.PaymentMethod or 'Not specified' }}</td>
+                            <td>{{ payment.PaymentStatus }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6">No payment records yet.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="/admin" class="home-button">BACK TO ADMIN</a>
+        </div>
+    </section>
+</body>
+</html>

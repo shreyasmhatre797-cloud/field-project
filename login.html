@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Member Login - Body Garage</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <p>WELCOME BACK</p>
+
+            <h2>
+                MEMBER <span>LOGIN</span>
+            </h2>
+
+        </div>
+
+        <form method="POST">
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+            >
+
+            <button type="submit">
+                LOGIN
+            </button>
+
+        </form>
+
+    </section>
+
+</body>
+
+</html>
